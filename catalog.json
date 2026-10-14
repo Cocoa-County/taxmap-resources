@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "jurisdictions": [
+    {
+      "id": "us-ca-contra-costa-concord",
+      "path": "jurisdictions/us/ca/contra-costa/concord.yaml",
+      "jurisdiction": {
+        "country": "US",
+        "region": "CA",
+        "county": "Contra Costa",
+        "city": "Concord"
+      },
+      "kinds": [
+        "parcel_gis"
+      ]
+    },
+    {
+      "id": "us-ca-contra-costa",
+      "path": "jurisdictions/us/ca/contra-costa/county.yaml",
+      "jurisdiction": {
+        "country": "US",
+        "region": "CA",
+        "county": "Contra Costa"
+      },
+      "kinds": [
+        "agenda_minutes",
+        "assessment_gis",
+        "boundary_gis",
+        "official_website",
+        "tax_bill"
+      ]
+    },
+    {
+      "id": "us-ca-contra-costa-martinez",
+      "path": "jurisdictions/us/ca/contra-costa/martinez.yaml",
+      "jurisdiction": {
+        "country": "US",
+        "region": "CA",
+        "county": "Contra Costa",
+        "city": "Martinez"
+      },
+      "kinds": [
+        "agenda_minutes",
+        "official_website"
+      ]
+    }
+  ]
+}

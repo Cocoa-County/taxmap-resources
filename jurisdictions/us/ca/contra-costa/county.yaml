@@ -1,0 +1,90 @@
+schema_version: 1
+id: us-ca-contra-costa
+jurisdiction:
+  country: US
+  region: CA
+  county: Contra Costa
+resources:
+  - id: contra-costa-website
+    kind: official_website
+    label: Contra Costa County website
+    authority: Contra Costa County
+    url: https://www.contracosta.ca.gov/
+    source_url: https://www.contracosta.ca.gov/
+    verification:
+      status: access_limited
+      checked_on: "2026-10-14"
+      method: HTTPS request returned HTTP 403.
+      notes: Access was not bypassed. The response does not establish general browser availability.
+  - id: contra-costa-tax-lookup
+    kind: tax_bill
+    label: County tax account lookup
+    authority: Contra Costa County Treasurer-Tax Collector
+    url: https://taxcolp.cccttc.us/lookup/
+    source_url: https://taxcolp.cccttc.us/lookup/
+    year_behavior: selectable_in_portal
+    verification:
+      status: verified
+      checked_on: "2026-10-14"
+      method: Opened the county account-lookup page and confirmed its agency heading.
+      notes: Lookup and payment functions share a portal. Use lookup only; never initiate payments.
+  - id: contra-costa-tax-bill-pdf
+    kind: tax_bill
+    label: County tax bill (PDF)
+    authority: Contra Costa County Treasurer-Tax Collector
+    url_template: https://taxcolp.cccttc.us/PTS_TaxbillsPdfCY?APN={apn_display}
+    source_url: https://taxcolp.cccttc.us/lookup/
+    apn_format: "###-###-###"
+    year_behavior: current_county_year
+    verification:
+      status: verified
+      checked_on: "2026-10-14"
+      method: HTTP HEAD with an already-public taxmap example returned 200 and application/pdf; no bill body retained.
+      notes: Endpoint/content type only. Recheck a project's APN and the returned bill year before use. The county selects the current year independently of the map.
+  - id: contra-costa-tax-bill-html
+    kind: tax_bill
+    label: Accessible county tax bill
+    authority: Contra Costa County Treasurer-Tax Collector
+    url_template: https://taxcolp.cccttc.us/PTS_TaxbillsHtmlCY?APN={apn_display}
+    source_url: https://taxcolp.cccttc.us/lookup/
+    apn_format: "###-###-###"
+    year_behavior: current_county_year
+    verification:
+      status: verified
+      checked_on: "2026-10-14"
+      method: HTTP HEAD with an already-public taxmap example returned 200 and text/html; no bill body retained.
+      notes: Endpoint/content type only. Recheck a project's APN and the returned bill year before use. Availability may differ by parcel.
+  - id: contra-costa-assessment-parcels
+    kind: assessment_gis
+    label: County assessment parcels
+    authority: Contra Costa County
+    url: https://gis.cccounty.us/arcgis/rest/services/CCMAP/Assessment_Parcels_ArcPro/MapServer/0
+    source_url: https://gis.cccounty.us/arcgis/rest/services/
+    apn_field: APN
+    verification:
+      status: verified
+      checked_on: "2026-10-14"
+      method: Read ArcGIS layer metadata; polygon geometry, APN and APN_CHECK fields, maximum 2000 records per response.
+      notes: Current GIS snapshot, not a certified tax-year inventory. Inspect coverage and check-digit rules before selecting or joining parcels.
+  - id: contra-costa-city-limits
+    kind: boundary_gis
+    label: County city-limits layer
+    authority: Contra Costa County
+    url: https://gis.cccounty.us/arcgis/rest/services/City_Limits/MapServer/6
+    source_url: https://gis.cccounty.us/arcgis/rest/services/
+    verification:
+      status: verified
+      checked_on: "2026-10-14"
+      method: Read ArcGIS metadata for BND_DCD_City_Limits; polygon geometry.
+      notes: Check the city's name field, update date and boundary limitations before filtering. A schematic boundary is not a legal survey.
+  - id: contra-costa-board-calendar
+    kind: agenda_minutes
+    label: Board of Supervisors meeting calendar and records
+    authority: Contra Costa County Board of Supervisors
+    url: https://contra-costa.legistar.com/Calendar.aspx
+    source_url: https://contra-costa.legistar.com/
+    verification:
+      status: verified
+      checked_on: "2026-10-14"
+      method: Opened the public Legistar calendar; October 2026 calendar controls were available.
+      notes: Calendar entry point only. Verify individual records and adoption in the project; this check does not prove archive completeness.

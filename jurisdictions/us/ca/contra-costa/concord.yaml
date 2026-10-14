@@ -1,0 +1,20 @@
+schema_version: 1
+id: us-ca-contra-costa-concord
+jurisdiction:
+  country: US
+  region: CA
+  county: Contra Costa
+  city: Concord
+resources:
+  - id: concord-parcels
+    kind: parcel_gis
+    label: Concord parcel layer
+    authority: City of Concord
+    url: https://gis.cityofconcord.org/gsrv1/rest/services/PublicGISBasemap/MapServer/9
+    source_url: https://gis.cityofconcord.org/gsrv1/rest/services/
+    apn_field: APN
+    verification:
+      status: verified
+      checked_on: "2026-10-14"
+      method: Read ArcGIS Parcels metadata; polygon geometry, APN and parcel_dashes fields, maximum 2000 records per response.
+      notes: City-specific service; do not treat it as a Martinez or countywide parcel inventory. Verify snapshot date and tax-year suitability.

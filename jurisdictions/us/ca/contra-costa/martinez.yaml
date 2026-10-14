@@ -1,0 +1,30 @@
+schema_version: 1
+id: us-ca-contra-costa-martinez
+jurisdiction:
+  country: US
+  region: CA
+  county: Contra Costa
+  city: Martinez
+resources:
+  - id: martinez-website
+    kind: official_website
+    label: City of Martinez website
+    authority: City of Martinez
+    url: https://www.cityofmartinez.org/
+    source_url: https://www.cityofmartinez.org/
+    verification:
+      status: access_limited
+      checked_on: "2026-10-14"
+      method: HTTPS request returned HTTP 403.
+      notes: Access was not bypassed. Use legitimately accessible official portals; do not assume every page is unavailable.
+  - id: martinez-meeting-archive
+    kind: agenda_minutes
+    label: City Council agenda, minutes and media archive
+    authority: City of Martinez
+    url: https://martinez.granicus.com/ViewPublisher.php?view_id=2
+    source_url: https://martinez.granicus.com/
+    verification:
+      status: verified
+      checked_on: "2026-10-14"
+      method: Opened the public publisher archive and confirmed it includes 2026 entries.
+      notes: Reusable archive entry point, not an individual meeting. Check whether the city has moved newer meetings to another portal.
