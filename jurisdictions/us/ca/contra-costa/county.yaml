@@ -52,8 +52,8 @@ resources:
     verification:
       status: verified
       checked_on: "2026-10-14"
-      method: HTTP HEAD with an already-public taxmap example returned 200 and text/html; no bill body retained.
-      notes: Endpoint/content type only. Recheck a project's APN and the returned bill year before use. Availability may differ by parcel.
+      method: Opened an accessible current-year county bill using a representative project parcel; confirmed returned parcel identity, situs and installment year.
+      notes: The nine-digit APN without its separate check digit returned the matching parcel. The county controls the current bill year independently of the map. Availability may differ by parcel; verify project applicability. No bill contents or sample identifiers are shared.
   - id: contra-costa-assessment-parcels
     kind: assessment_gis
     label: County assessment parcels
